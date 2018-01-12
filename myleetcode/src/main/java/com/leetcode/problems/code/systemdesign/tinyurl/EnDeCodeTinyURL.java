@@ -1,4 +1,4 @@
-package com.leetcode.problems.code.systemdesign;
+package com.leetcode.problems.code.systemdesign.tinyurl;
 
 import java.util.HashMap;
 import java.util.Random;
