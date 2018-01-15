@@ -13,6 +13,8 @@ public class Url implements Identifiable {
   }
 
 
+
+
   public String getShortURL() {
     return shortURL;
   }
@@ -29,7 +31,7 @@ public class Url implements Identifiable {
     id = id;
   }
 
-  public Serializable getId() {
+  public Long getId() {
     return id;
   }
 }
