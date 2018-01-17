@@ -20,7 +20,7 @@ class TwoSum {
     throw new IllegalArgumentException("no solution");
   }
 
-  public static void main(String[] args) throws Exception {
+ /** public static void main(String[] args) throws Exception {
     int target = 6;
 
     int[] sums = {3, 2, 4};
@@ -29,5 +29,5 @@ class TwoSum {
     TwoSum so = new TwoSum();
     result = so.twoSum(sums, target);
     System.out.println(Arrays.toString(result));
-  }
+  }*/
 }

@@ -50,7 +50,7 @@ public class AddTwoNumbers {
 
   }
 
-  public static void main(String[] args) {
+ /** public static void main(String[] args) {
     ListNode listNodeF = new ListNode(5);
     ListNode listNodeF_4 = new ListNode(0);
 
@@ -60,5 +60,5 @@ public class AddTwoNumbers {
     AddTwoNumbers add = new AddTwoNumbers();
 
     ListNode listNodeAdd = add.addTwoNumbers(listNodeF, listNodeS);
-  }
+  }*/
 }

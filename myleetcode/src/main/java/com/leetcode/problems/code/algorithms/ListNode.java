@@ -10,7 +10,7 @@ public class ListNode {
     val = x;
   }
 
-  public static void main(String[] args) {
+  /**public static void main(String[] args) {
     ListNode listNodeF = new ListNode(2);
     ListNode listNodeF_4 = new ListNode(4);
     listNodeF.next = listNodeF_4;
@@ -22,6 +22,6 @@ public class ListNode {
     listNodeS_6.next = listNodeF_4;
 
 
-  }
+  }*/
 }
 
