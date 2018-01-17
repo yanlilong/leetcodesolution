@@ -1,12 +1,13 @@
 package com.leetcode.problems.code.systemdesign.tinyurl.repository;
 
-import com.leetcode.problems.code.systemdesign.tinyurl.domain.Identifiable;
+//import com.leetcode.problems.code.systemdesign.tinyurl.domain.Identifiable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
+/**
 public abstract class DRepository<T extends Identifiable> {
 
   @Autowired
@@ -26,8 +27,27 @@ public abstract class DRepository<T extends Identifiable> {
   public List<T> findAll() {
     return elements;
   }
-  public Optional<T> findById(Long id){
-    return elements.stream().filter(e->e.getId().equals(id)).findFirst();
+
+  public Optional<T> findById(Long id) {
+    return elements.stream().filter(e -> e.getId().equals(id)).findFirst();
   }
 
+
+  public void clear() {
+    elements.clear();
+  }
+
+  public boolean update(Long id, T updated) {
+    if (updated == null) {
+      return false;
+    } else {
+      Optional<T> element = findById(id);
+      element.ifPresent(original -> updateIfExists(original, updated));
+      return element.isPresent();
+
+    }
+  }
+
+  protected abstract void updateIfExists(T original, T desired);
 }
+*/
