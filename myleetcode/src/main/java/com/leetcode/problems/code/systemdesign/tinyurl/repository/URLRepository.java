@@ -7,4 +7,5 @@ import com.leetcode.problems.code.systemdesign.tinyurl.domain.Url;
 public interface URLRepository extends CrudRepository<Url, Long> {
 
 
+  public Url findBylongUrl(String longURL);
 }
