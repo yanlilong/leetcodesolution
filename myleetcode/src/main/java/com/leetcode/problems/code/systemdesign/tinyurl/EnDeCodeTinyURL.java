@@ -3,6 +3,9 @@ package com.leetcode.problems.code.systemdesign.tinyurl;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.leetcode.problems.code.systemdesign.tinyurl.domain.Url;
+import com.leetcode.problems.code.systemdesign.tinyurl.repository.URLRepository;
+
 
 /**
  * 535. Encode and Decode TinyURL bloomfilter
@@ -16,6 +19,8 @@ public class EnDeCodeTinyURL {
 
   private static HashMap<String, String> tinyUrlMap = new HashMap<String, String>();
 
+  private static URLRepository urlRepository;
+
   public static String getValue() {
     StringBuilder builder = new StringBuilder();
     Random random = new Random();
@@ -27,12 +32,13 @@ public class EnDeCodeTinyURL {
     return builder.toString();
   }
 
-  private static boolean findUrl(String url) {
+  public static boolean findUrl(String longURL) {
     boolean hasURL = false;
-    if (!tinyUrlMap.isEmpty() && tinyUrlMap.containsKey(url)) {
+    Url url = urlRepository.findBylongUrl(longURL);
+    if (url != null) {
       hasURL = true;
-
     }
+
     return hasURL;
   }
 
