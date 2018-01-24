@@ -26,6 +26,24 @@ Set P=N-1;
         );
 END
 
+
+--178. Rank Scores
+create table Scores(Id int Not null Auto_increment PRIMARY KEY,Score float(5,2) NOT NULL);
+insert into Scores(Id,Score) values(1,3.50),(2,3.65),(3,4.00),(4,3.85),(5,4.00),(6,3.65);
+select * from Scores;
+
+--answer 1
+SELECT
+  Score,
+  (SELECT count(distinct Score) FROM Scores WHERE Score >= s.Score) Rank
+FROM Scores s
+ORDER BY Score desc
+
+--answer 2 use @rank variale,but leetcode don't accept this answer,but mysql executes right.
+select Score,case when @prevRank=Score then @rank when @prevRank:=Score then @rank:=@rank+1 end as Rank from  Scores,(select @rank:=0,@prevRank:=null) r order by Score des
+
+
+
 --Problem 181:Employees Earning More Than Their Managers
 select employee.Name as Employee from Employee employee,Employee manager where employee.Salary>manager.Salary and employee.ManagerId=manager.Id;
 
