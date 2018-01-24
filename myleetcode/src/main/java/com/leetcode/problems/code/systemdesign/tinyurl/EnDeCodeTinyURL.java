@@ -1,6 +1,5 @@
 package com.leetcode.problems.code.systemdesign.tinyurl;
 
-import java.util.HashMap;
 import java.util.Random;
 
 import com.leetcode.problems.code.systemdesign.tinyurl.domain.Url;
@@ -16,8 +15,6 @@ public class EnDeCodeTinyURL {
   public static final String keySource = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
   public static final String urlString = "http://myurlgenerator/";
-
-  private static HashMap<String, String> tinyUrlMap = new HashMap<String, String>();
 
   private static URLRepository urlRepository;
 
@@ -42,31 +39,32 @@ public class EnDeCodeTinyURL {
     return hasURL;
   }
 
-  public static HashMap getTinyUrlMap() {
-    return tinyUrlMap;
-
-  }
 
   public static String encodeLongUrl(String longURL) {
     String value = null;
 
     if (!findUrl(longURL)) {
-      value = getValue().toString();
-      while (tinyUrlMap.values().contains(value)) {
-        value = getValue().toString();
-      }
-      value = urlString + value;
+      value = urlString + getValue().toString();
 
-      tinyUrlMap.put(value, longURL);
       return value;
     } else {
-      return tinyUrlMap.get(longURL).toString();
+
+      Url url = urlRepository.findBylongUrl(longURL);
+      if (url != null) {
+        value = urlString + url.getShortURL();
+      }
+      return value;
     }
 
   }
 
   public static String decodeShortUrl(String shortURL) {
-    return tinyUrlMap.get(shortURL).toString();
+    Url url = urlRepository.findByshortUrl(shortURL);
+    if (url != null) {
+      return url.getLongURL();
+    } else {
+      return null;
+    }
 
   }
 
