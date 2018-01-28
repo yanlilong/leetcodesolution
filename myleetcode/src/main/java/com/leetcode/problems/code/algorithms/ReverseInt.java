@@ -23,39 +23,38 @@ public class ReverseInt {
   public static int reverse(long i) {
     if (i == 0) {
       return 0;
-    }
-    String reverse = "";
-    String reverse1 = "";
-    String reverse2 = "";
-    String origin;
-
-    origin = String.valueOf(i);
-    while (origin.substring((origin.length() - 1)).equals('0')) {
-      origin = origin.substring(0, origin.length() - 2);
-    }
-
-    if ((origin.charAt(0)) == ('-')) {
-      reverse1 = "-";
-      origin = origin.substring(1, origin.length());
-    }
-
-    for (int j = origin.length() - 1; j >= 0; j--) {
-      reverse2 = reverse2 + origin.charAt(j);
-
-    }
-
-    if ((Long.valueOf(reverse1 + reverse2) > Integer.MAX_VALUE) || (
-        Long.valueOf(reverse1 + reverse2) < Integer.MIN_VALUE)) {
-      return 0;
     } else {
-      return (Long.valueOf(reverse1 + reverse2)).intValue();
+      String reverse = "";
+      String reverse1 = "";
+      String reverse2 = "";
+
+      String origin = String.valueOf(i);
+      while (origin.substring((origin.length() - 1)).equals('0')) {
+        origin = origin.substring(0, origin.length() - 2);
+      }
+
+      if ((origin.charAt(0)) == ('-')) {
+        reverse1 = "-";
+        origin = origin.substring(1, origin.length());
+      }
+
+      for (int j = origin.length() - 1; j >= 0; j--) {
+        reverse2 = reverse2 + origin.charAt(j);
+
+      }
+
+      if ((Long.valueOf(reverse1 + reverse2) > Integer.MAX_VALUE) || (
+          Long.valueOf(reverse1 + reverse2) < Integer.MIN_VALUE)) {
+        return 0;
+      } else {
+        return (Long.valueOf(reverse1 + reverse2)).intValue();
+      }
     }
-
   }
 
-  public static void main(String[] args) {
+ /** public static void main(String[] args) {
     System.out.println(ReverseInt.reverse(9876543211L));
-  }
+  }*/
 }
 
 
