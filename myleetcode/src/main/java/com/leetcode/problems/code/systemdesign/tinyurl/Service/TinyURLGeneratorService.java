@@ -4,21 +4,24 @@ import java.util.Random;
 
 import com.leetcode.problems.code.systemdesign.tinyurl.domain.Url;
 import com.leetcode.problems.code.systemdesign.tinyurl.repository.URLRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
  * 535. Encode and Decode TinyURL bloomfilter
  */
 
-public class EnDeCodeTinyURL {
+  @Service
+public class TinyURLGeneratorService {
 
-  public static final String keySource = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  public String keySource = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-  public static final String urlString = "http://myurlgenerator/";
+  public String urlString = "http://myurlgenerator/";
+ @Autowired
+  private URLRepository urlRepository;
 
-  private static URLRepository urlRepository;
-
-  public static String getValue() {
+  public String getValue() {
     StringBuilder builder = new StringBuilder();
     Random random = new Random();
     int index = 0;
@@ -29,37 +32,38 @@ public class EnDeCodeTinyURL {
     return builder.toString();
   }
 
-  public static boolean findUrl(String longURL) {
+  public boolean findUrl(String longURL) {
     boolean hasURL = false;
-    Url url = urlRepository.findBylongUrl(longURL);
+    Url url = urlRepository.findBylongURL(longURL);
     if (url != null) {
       hasURL = true;
     }
 
     return hasURL;
+
   }
 
 
-  public static String encodeLongUrl(String longURL) {
+  public String encodeLongUrl(String longURL) {
     String value = null;
 
     if (!findUrl(longURL)) {
       value = urlString + getValue().toString();
 
-      return value;
+
     } else {
 
-      Url url = urlRepository.findBylongUrl(longURL);
+      Url url = urlRepository.findBylongURL(longURL);
       if (url != null) {
         value = urlString + url.getShortURL();
       }
-      return value;
-    }
 
+    }
+    return value;
   }
 
-  public static String decodeShortUrl(String shortURL) {
-    Url url = urlRepository.findByshortUrl(shortURL);
+  public  String decodeShortUrl(String shortURL) {
+    Url url = urlRepository.findByshortURL(shortURL);
     if (url != null) {
       return url.getLongURL();
     } else {
@@ -67,6 +71,7 @@ public class EnDeCodeTinyURL {
     }
 
   }
+  
 
   /**public static void main(String[] args) {
 
