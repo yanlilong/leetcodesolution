@@ -5,10 +5,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.leetcode.problems.code.systemdesign.tinyurl.domain.Url;
 
 @Transactional
+
 public interface URLRepository extends CrudRepository<Url, Long> {
 
 
-  public Url findBylongUrl(String longURL);
+  public Url findBylongURL(String longURL);
 
-  public Url findByshortUrl(String shortURL);
+  public Url findByshortURL(String shortURL);
 }
