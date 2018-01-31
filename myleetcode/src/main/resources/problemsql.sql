@@ -67,6 +67,12 @@ Anwser one: select A.Id as Id from Weather A inner join Weather as B on B.Date=s
 Anwser two: select A.Id as Id from Weather A, Weather B where B.Date=subdate(A.Date, 1)  and A.Temperature>B.Temperature;
 
 
+
+
+---620. Not Boring Movies
+select * from cinema where (id % 2) <> 0 and description!='boring'
+order by rating desc;
+
 ---627 swap salary
 update salary set sex="s" where sex="f";
 update salary set sex="f" where sex="m";
