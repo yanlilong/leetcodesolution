@@ -66,6 +66,13 @@ delete p1 from Person p1,Person p2 where p1.Email=p2.Email and p1.Id>p2.Id;
 Anwser one: select A.Id as Id from Weather A inner join Weather as B on B.Date=subdate(A.Date, 1) where A.Temperature>B.Temperature;
 Anwser two: select A.Id as Id from Weather A, Weather B where B.Date=subdate(A.Date, 1)  and A.Temperature>B.Temperature;
 
+---596 Classes More Than 5 Students
+create table courses(student varchar(4) NOT NULL PRIMARY KEY,class varchar(10) not null);
+
+insert into courses(student,class) values('A','Math'),('B','English'),('C','Math'),('D','Biology'),('E','Math'),('F','Computer'),('G','Math'),('H','Math'),('I','Math');
+
+select class from (select class, count(distinct student) as num from courses group by class) as temp_table where num>=5;
+
 
 
 
