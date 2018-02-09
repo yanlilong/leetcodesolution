@@ -1,14 +1,11 @@
 package com.leetcode.problems.code.systemdesign.tinyurl.domain;
 
-import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 /**
  * public class Url implements Identifiable {
  *
@@ -39,7 +36,7 @@ public class Url {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
 
-private Integer id;
+  private Integer id;
   private String longURL;
   private String shortURL;
 

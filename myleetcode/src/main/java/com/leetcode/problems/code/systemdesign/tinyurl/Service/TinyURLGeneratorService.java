@@ -42,10 +42,11 @@ public class TinyURLGeneratorService {
 
   public Url findUrl(String longURL) {
 
-    ArrayList<Url> urlList = (ArrayList<Url>) urlRepository.findBylongURL(longURL);
-    if (!urlList.isEmpty()) {
-      logger.info("url in database saved" + urlList.get(0));
-      return urlList.get(0);
+    logger.info("longURL="+longURL);
+logger.info("empty="+urlRepository.findByLongURL(longURL).isEmpty());
+    if (!urlRepository.findByLongURL(longURL).isEmpty()) {
+      logger.info("url in database saved" + urlRepository.findByLongURL(longURL).get(0));
+      return urlRepository.findByLongURL(longURL).get(0);
     } else {
       return null;
     }
@@ -61,7 +62,7 @@ public class TinyURLGeneratorService {
 
     if (url == null) {
       value = urlString + getValue().toString();
-      urlcrudService.createURL(value, longURL);
+      urlcrudService.createURL(longURL,value);
 
 
     } else {
@@ -72,7 +73,7 @@ public class TinyURLGeneratorService {
   }
 
   public String decodeShortUrl(String shortURL) {
-    ArrayList<Url> urlList = (ArrayList<Url>) urlRepository.findByshortURL(shortURL);
+    ArrayList<Url> urlList = (ArrayList<Url>) urlRepository.findByShortURL(shortURL);
     if (!urlList.isEmpty()) {
       return urlList.get(0).getLongURL();
     } else {
