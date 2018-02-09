@@ -13,7 +13,7 @@ public class LongestCommonPrefixTest {
         "leet"};// short form is allowed only at variable initialization
     String prefix = LongestCommonPrefix.longestCommonPrefix(strs);
     //assertEquals(prefix, "leet");
-    assertEquals(LongestCommonPrefix.longestCommonPrefix(null), "");
+    assertEquals(LongestCommonPrefix.longestCommonPrefix(strs), "leet");
   }
 
 }
