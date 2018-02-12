@@ -12,9 +12,9 @@ public class CustomerCRUDService {
   @Autowired
   CustomerRepository customerRepository;
 
-  public List<Customer> getCustomer(String email){
-    List<Customer> customerList=customerRepository.findByEmail(email);
-    return customerList;
+  public Customer getCustomer(String email){
+    Customer customer=customerRepository.findByEmail(email);
+    return customer;
 
     }
 
