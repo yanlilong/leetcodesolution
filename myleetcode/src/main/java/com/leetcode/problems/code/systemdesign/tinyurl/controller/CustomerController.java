@@ -24,7 +24,9 @@ public class CustomerController {
   private CustomerRepository customerRepository;
 
 
-  @RequestMapping(path = "/customerdetails/{email}/", produces = "application/json;charset=UTF-8")
+  //@RequestMapping(path = "/customerdetails/{email}/", produces = "application/json;charset=UTF-8")
+    @RequestMapping(path = "/customerdetails/{email}/", produces = {"text/plain"})
+
   @ResponseBody
   public Customer getCustomerDetails(@PathVariable String email) {
     logger.info("email=" + email);

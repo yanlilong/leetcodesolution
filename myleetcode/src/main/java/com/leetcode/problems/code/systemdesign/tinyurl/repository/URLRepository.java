@@ -18,4 +18,5 @@ public interface URLRepository extends CrudRepository<Url, Long> {
   //@Query("select u from Url u where u.shortURL = :shortURL")
   //public List<Url> findByShortURL(@Param("shortURL") String shortURL);
   public List<Url> findByShortURL(String shortURL);
+
 }
