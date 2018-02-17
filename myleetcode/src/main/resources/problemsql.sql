@@ -66,6 +66,10 @@ delete p1 from Person p1,Person p2 where p1.Email=p2.Email and p1.Id>p2.Id;
 Anwser one: select A.Id as Id from Weather A inner join Weather as B on B.Date=subdate(A.Date, 1) where A.Temperature>B.Temperature;
 Anwser two: select A.Id as Id from Weather A, Weather B where B.Date=subdate(A.Date, 1)  and A.Temperature>B.Temperature;
 
+---595 big countries
+Select name,population,area from world where area>3000000 or population>25000000;
+
+
 ---596 Classes More Than 5 Students
 create table courses(student varchar(4) NOT NULL PRIMARY KEY,class varchar(10) not null);
 
