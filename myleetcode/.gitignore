@@ -6,3 +6,4 @@ project/project
 *.ipr
 *.iws
 out
+doc
