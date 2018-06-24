@@ -1,5 +1,6 @@
-package com.leetcode.problems.code.systemdesign.tinyurl.Exception;
+package com.leetcode.problems.code.systemdesign.tinyurl.exception;
 
+import com.leetcode.problems.code.systemdesign.tinyurl.exception.runtime.ShortURLNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
